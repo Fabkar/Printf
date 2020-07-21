@@ -1,1 +1,1 @@
-# printf
+This directory contains the files of _printf functions.
