@@ -16,11 +16,11 @@ typedef struct formats
 	} form;
 int _putchar(char c);
 int _printf(const char *format, ...);
-int p_aux_int(int n, int cont);
+int p_aux_int(long int n, int cont);
 int p_str(va_list arguments);
 int p_char(va_list arguments);
 int p_int(va_list arguments);
 int p_dec(va_list arguments);
-int p_aux_dec(int n, int cont);
+int p_aux_dec(long int n, int cont);
 
 #endif/*_HOLBERTON_H_*/
