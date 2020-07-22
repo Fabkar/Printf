@@ -6,7 +6,7 @@
 */
 int p_dec(va_list arguments)
 {
-	int lenght, n, cont = 1;
+	long int lenght, n, cont = 1;
 		n = va_arg(arguments, int);
 	lenght = p_aux_dec(n, cont);
 	return (lenght);
@@ -17,12 +17,12 @@ int p_dec(va_list arguments)
 * @cont: Counter to string.
 * Return: lenght of the "int".
 */
-int p_aux_dec(int n, int cont)
+int p_aux_dec(long int n, int cont)
 {
 	++cont;
 	if (n < 0)
 	{
-		n = -n, _putchar('-'), ++cont;
+		n *= -1, _putchar('-'), ++cont;
 	}
 	if (n / 10)
 	{
