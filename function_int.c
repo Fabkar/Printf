@@ -7,7 +7,7 @@
 int p_int(va_list arguments)
 {
 	int lenght, n, cont = 1;
-​
+
 	n = va_arg(arguments, int);
 	lenght = p_aux_int(n, cont);
 	return (lenght);
