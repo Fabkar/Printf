@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 				}
 				if (format[i + 1] == '\0')
 					_putchar(format[i]), i++, lenght++;
-			}			
+			}
 			else
 				lenght += _putchar(format[i + 1]), i++;
 		}
