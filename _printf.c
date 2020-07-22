@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 	va_start(arguments, format);
 	if ((format == NULL) || ((format[0] == '%') && (format[1] == '\0')))
 		return (-1);
-	while (format && format[i])
+	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
@@ -29,7 +29,9 @@ int _printf(const char *format, ...)
 						lenght += types[j].func(arguments), i++;
 					j++;
 				}
-			}
+				if (format[i + 1] == '\0')
+					_putchar(format[i]), i++, lenght++;
+			}			
 			else
 				lenght += _putchar(format[i + 1]), i++;
 		}
