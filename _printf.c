@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 		{NULL, NULL}};
 	va_list arguments;
 	int i = 0, j, lenght = 0;
-​
+
 	va_start(arguments, format);
 	if ((format == NULL) || ((format[0] == '%') && (format[1] == '\0')))
 		return (-1);
@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 				{
 					if (format[i + 1] == types[j].ch[0])
 						lenght += types[j].func(arguments), i++;
-				j++;
+					j++;
 				}
 			}
 			else
