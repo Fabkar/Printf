@@ -8,7 +8,7 @@ int _printf(const char *format, ...)
 {
 	form types[] = {
 		{"c", p_char}, {"i", p_int},
-		{"s", p_str}, {"d", p_dec},
+		{"s", p_str}, {"d", p_int},
 		{NULL, NULL}};
 	va_list arguments;
 	int i = 0, j, lenght = 0;
@@ -26,16 +26,33 @@ int _printf(const char *format, ...)
 				while ((types[j].ch) != NULL)
 				{
 					if (format[i + 1] == types[j].ch[0])
-						lenght += types[j].func(arguments), i++;
+					{
+						lenght += types[j].func(arguments), i += 2;
+						break;
+					}
 					j++;
 				}
+				if ((types[j].ch) != NULL)
+					continue;
 			}
-			else
-				lenght += _putchar(format[i + 1]), i++;
+			if (!(types[j].ch) && format[i + 1] == ' ' && format[i + 2] == '%')
+			{
+				_putchar(format[i]), i += 3, lenght++;
+				continue;
+			}
+			if ((format[i + 1] != '%') && (format[i + 1] != ' '))
+			{
+				_putchar(format[i]), i++, lenght++;
+				continue;
+			}
+			if (((format[i + 1] == '\n') && (format[i + 2] == '\0')) || (format[i]))
+			{
+				_putchar('%'), i += 2, lenght++;
+				continue;
+			}
 		}
 		else
-			_putchar(format[i]), lenght++;
-		i++;
+			_putchar(format[i]), i++, lenght++;
 	}
 	va_end(arguments);
 	return (lenght);
