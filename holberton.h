@@ -20,6 +20,4 @@ int p_aux_int(long int n, long int);
 int p_str(va_list arguments);
 int p_char(va_list arguments);
 int p_int(va_list arguments);
-int p_dec(va_list arguments);
-int p_aux_dec(long int n);
 #endif/*_HOLBERTON_H_*/

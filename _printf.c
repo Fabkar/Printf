@@ -2,58 +2,47 @@
 /**
 * _printf - print c,s,f,u,i,d
 * @format: arguments
-* Return: lenght of all characters
+* Return: length of all characters
 */
 int _printf(const char *format, ...)
 {
-	form types[] = {
-		{"c", p_char}, {"i", p_int},
-		{"s", p_str}, {"d", p_int},
-		{NULL, NULL}};
+form types[] = {
+	{"c", p_char}, {"s", p_str}, {"d", p_int}, {"i", p_int}, {NULL, NULL}};
 	va_list arguments;
-	int i = 0, j, lenght = 0;
+	int pos = 0, length = 0, pos_form;
 
 	va_start(arguments, format);
-	if ((format == NULL) || ((format[0] == '%') && (format[1] == '\0')))
+	if (!format || !format[pos])
 		return (-1);
-	while (format[i] != '\0')
+	for (; format[pos]; pos++)
 	{
-		if (format[i] == '%')
+		if (format[pos] == '%')
 		{
-			if (format[i + 1] != '%')
+			if (format[pos + 1] == '\0')
+				return (-1);
+			if (format[pos + 1] == '%')
+				_putchar(37), length++;
+			else
 			{
-				j = 0;
-				while ((types[j].ch) != NULL)
+				for (pos_form = 0; types[pos_form].ch != NULL; pos_form++)
 				{
-					if (format[i + 1] == types[j].ch[0])
+					if (types[pos_form].ch[0] == format[pos + 1])
 					{
-						lenght += types[j].func(arguments), i += 2;
+						length += types[pos_form].func(arguments);
 						break;
 					}
-					j++;
 				}
-				if ((types[j].ch) != NULL)
-					continue;
+				if (types[pos_form].ch == NULL)
+				{
+					_putchar(format[pos]);
+					_putchar(format[pos + 1]), length++;
+				}
 			}
-			if (!(types[j].ch) && format[i + 1] == ' ' && format[i + 2] == '%')
-			{
-				_putchar(format[i]), i += 3, lenght++;
-				continue;
-			}
-			if ((format[i + 1] != '%') && (format[i + 1] != ' '))
-			{
-				_putchar(format[i]), i++, lenght++;
-				continue;
-			}
-			if (((format[i + 1] == '\n') && (format[i + 2] == '\0')) || (format[i]))
-			{
-				_putchar('%'), i += 2, lenght++;
-				continue;
-			}
+			pos++;
 		}
 		else
-			_putchar(format[i]), i++, lenght++;
+			_putchar(format[pos]), length++;
 	}
 	va_end(arguments);
-	return (lenght);
+	return  (length);
 }
