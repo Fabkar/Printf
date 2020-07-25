@@ -20,16 +20,16 @@ int p_int(va_list arguments)
 	else
 		n_aux = n;
 	l_aux = n_aux;
-	while(n_aux > 9)
+	while (n_aux > 9)
 	{
-		n_aux = n_aux / 10; 
+		n_aux = n_aux / 10;
 		d *= 10;
 	}
-	while(d > 0)
+	while (d > 0)
 	{
 		_putchar(((l_aux / d) % 10) + '0');
 		count++;
 		d /= 10;
 	}
-	return(count);
+	return (count);
 }
