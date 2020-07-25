@@ -6,29 +6,30 @@
 */
 int p_int(va_list arguments)
 {
-return (p_aux_int(va_arg(arguments, int), 0));
-}
-/**
-* p_aux_int - Recursion function aux and print int.
-* @n: Number to print (lenght).
-* @count: lenght counter.
-* Return: lenght of the "int".
-*/
-int p_aux_int(long int n, long int count)
-{
-if (n < 0)
-{
-n = -n;
-_putchar('-');
-++count;
-}
-else if (!(n / 10))
-{
-	_putchar(n % 10 + '0');
-	return (++count);
-}
-if (n / 10)
-	count = p_aux_int(n / 10, ++count);
-_putchar(n % 10 + '0');
-return (count);
+	long int n, n_aux, d = 1, l_aux;
+	int count = 0;
+
+	n = va_arg(arguments, int);
+
+	if (n < 0)
+	{
+		n_aux = -n;
+		_putchar('-');
+		count++;
+	}
+	else
+		n_aux = n;
+	l_aux = n_aux;
+	while(n_aux > 9)
+	{
+		n_aux = n_aux / 10; 
+		d *= 10;
+	}
+	while(d > 0)
+	{
+		_putchar(((l_aux / d) % 10) + '0');
+		count++;
+		d /= 10;
+	}
+	return(count);
 }
