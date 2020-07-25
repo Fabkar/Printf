@@ -35,7 +35,7 @@ form types[] = {
 				if (types[pos_form].ch == NULL)
 				{
 					_putchar(format[pos]);
-					_putchar(format[pos + 1]), length++;
+					_putchar(format[pos + 1]), length += 2;
 				}
 			}
 			pos++;
