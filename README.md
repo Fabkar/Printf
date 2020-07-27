@@ -1,4 +1,4 @@
-![Holberton School](https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTLtL_ToHLEo_BWFxD-yf32Ux3zfsH_NPc8Qw&usqp=CAU)
+![Holberton School]<div style="text-align:center"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTLtL_ToHLEo_BWFxD-yf32Ux3zfsH_NPc8Qw&usqp=CAU" /></div>
 # **PROJECT _printf**
 
 ## BACKGROUND :atom:
